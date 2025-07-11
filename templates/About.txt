@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Nirikṣaṇam</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div class="half upper">
+        <div class="page-about">
+            <header>
+                <div class="logo-container">
+                    <img src="/static/images/logo1.png" alt="Plagiarism Detection Logo" class="logo">
+
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/" class="CLICKABLE">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/faqs">FAQs</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <header id="header-about">
+                <h1 id="main-title">About Nirikṣaṇam</h1>
+            </header>
+            <section id="about-content" class="content-section">
+                <p id="intro-text">Nirikṣaṇam is an AI-powered tool designed to detect plagiarism and promote academic
+                    honesty. Whether you’re a student, teacher, or institution, our platform ensures that all academic work
+                    is original and free from plagiarism. Using advanced artificial intelligence techniques, Nirikṣaṇam
+                    checks documents to give accurate results, making it easier to spot copied content and maintain
+                    integrity in academic work.</p>
+                <div class="mission" class="sub-section">
+                    <b>Our Mission</b><br>
+                    We aim to support academic integrity by providing a reliable, easy-to-use tool for detecting plagiarism
+                    and encouraging original work.
+                </div>
+    
+                <div class="why-choose" class="sub-section">
+                    <b>Why Choose Nirikṣaṇam?</b>
+                    <ul id="why-choose-list">
+                        <li id="ai-accuracy"><b>1. AI-Driven Accuracy:</b> Our smart algorithms scan a wide range of sources to
+                            find copied content with high precision.</li>
+                        <li id="detailed-reports"><b>2. Detailed Reports:</b> Get clear and simple reports that show where
+                            plagiarism might be present and offer suggestions to improve.</li>
+                        <li id="easy-to-use"><b>3. Easy to Use:</b> The platform is designed to be simple for both students and
+                            educators.</li>
+                        <li id="promoting-integrity"><b>4. Promoting Integrity:</b> We don't just detect plagiarism; we help
+                            users understand the importance of originality in their work.</li>
+                    </ul>
+                </div>
+    
+                <div class="vision" class="sub-section">
+                    <b>Our Vision:</b><br>
+                    We want to help create an academic world where originality and honesty are valued, supported by
+                    innovative AI technology.
+                </div>
+    
+                <p id="final-remarks">Whether you’re working on an assignment, grading papers, or managing an institution,
+                    Nirikṣaṇam is here to help you maintain high standards of academic integrity.</p>
+            </section>
+        </div>
+         <!-- <footer>
+    <p>&copy; 2025 Nirikṣaṇam. All rights reserved.</p>
+    </footer> -->
+        </div> 
+    
+        <script src="/static/script.js"></script>
+    </body>
+    
+    </html>

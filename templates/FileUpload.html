@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarism Detection</title>
+     <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="half upper">
+        <div class="page-two">
+            <header>
+                <div class="logo-container">
+                    <img src="/static/images/logo1.png" alt="Plagiarism Detection Logo" class="logo">
+
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/" class="CLICKABLE">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/faqs">FAQs</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="main-container">
+                <h3>Check Your Plagarism</h3>
+                <div class="content-wrapper">
+                <form class="form-container" action="{{url_for('predict')}}" method='POST' enctype="multipart/form-data">
+                    <label for="titleInput">Enter your title:</label>
+                        <input type="text" id="titleInput" name="title" placeholder="Enter your title" required>
+
+                        <label for="textInput">Enter your text to check plagarism:</label>
+                        <textarea id="textInput" name="text" rows="10" placeholder="Paste your text here"></textarea>
+
+                        <label for="fileUpload">Upload your file:</label>
+                        <input type="file" id="fileUpload" name="file" accept=".doc,.docx,.pdf,.txt">
+                        <!-- Word Count for File -->
+                        <div id="wordCount">Total Word Count:</div>
+
+                        <!-- Submit Button -->
+                        <button type="submit">Submit</button>
+                    </form>
+                    <!-- Loading overlay -->
+                    <div class="loading-overlay" id="loadingOverlay">
+                        <div class="spinner"></div>
+                        Checking for plagiarism... Please wait.
+                    </div>
+                </div>
+            </div>
+            <section class="workflow">
+                <div class="step">
+                    <img src="https://img.icons8.com/?size=160&id=dystXkHEZ6i6&format=png" alt="Upload icon"
+                        class="step-icon">
+                    <h3>Paste your text or upload a PDF, DOC, or DOCX file.</h3>
+                </div>
+                <div class="step">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1027/1027650.png" alt="Wait icon"
+                        class="step-icon">
+                    <h3>Your document is compared to billions of web pages, books, and articles. This may take a few
+                        minutes.</h3>
+                </div>
+                <div class="step">
+                    <img src="https://cdn-icons-png.flaticon.com/512/11010/11010833.png" alt="Receive report icon"
+                        class="step-icon">
+                    <h3>Similarities are highlighted and matched to the source. You also receive a plagiarism score.
+                    </h3>
+                </div>
+                <div class="step">
+                    <img src="https://www.shutterstock.com/image-vector/vector-flat-icon-copied-documents-260nw-1282545502.jpg"
+                        alt="Fix plagiarism icon" class="step-icon">
+                    <h3>Add missing citations or rewrite your text. Use our Knowledge Base for assistance.</h3>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="static/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.15.349/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+</body>
+
+</html>

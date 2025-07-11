@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarized File Display</title>
+    <!-- <style>
+       
+    </style> -->
+    <link rel="stylesheet" href="/static/result.css">
+</head>
+
+<body>
+    <div class="half upper">
+        <div class="page-result">
+            <header>
+                <div class="logo-container">
+                    <img src="/static/images/logo1.png" alt="Plagiarism Detection Logo" class="logo">
+                    <!-- <span class="site-name">PLAGIARISM<br> DETECTION</span> -->
+
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/" class="CLICKABLE">Home</a></li>
+                        <li><a href="/about" class="CLICKABLE">About</a></li>
+                        <li><a href="/faqs" class="CLICKABLE">FAQs</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <!-- <h1 class="title-heading">Plagiarized File Display</h1> -->
+            <div class="container1">
+                <div class="file-container">
+                    <div id="pdfContainer"></div>
+                </div>
+                <div class="result-container">
+                    <h2>plagarisim percentage</h2>
+                    <div class="chart-container">
+                        <canvas id="piechart"></canvas>
+                    </div>
+            </div>
+            <div class="download-container">
+                <a href="{{ download_link }}" class="download-button" id="download-button">Download File</a>
+                <div id="download-message" style="display: none;">Download Started...</div>
+            </div>
+        </div>
+    </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script>
+    async function renderPDF(url) {
+        try {
+            console.log("Loading PDF from:", url);
+
+            if (!url) {
+                console.error("PDF URL is missing!");
+                return;
+            }
+
+            const pdf = await pdfjsLib.getDocument(url).promise;
+            console.log("PDF loaded with", pdf.numPages, "pages");
+
+            const container = document.getElementById("pdfContainer");
+            container.innerHTML = '';  // Clear old content if any
+
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                const page = await pdf.getPage(pageNum);
+                const scale = 1.5;
+                const viewport = page.getViewport({ scale });
+
+                const canvas = document.createElement("canvas");
+                const context = canvas.getContext("2d");
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+
+                container.appendChild(canvas);
+                console.log(`Rendering page ${pageNum}...`);
+
+                await page.render({ canvasContext: context, viewport }).promise;
+                console.log(`Page ${pageNum} rendered successfully`);
+            }
+        } catch (error) {
+            console.error("Error rendering PDF:", error);
+        }
+    }
+
+    // Load PDF from Flask route dynamically
+    const pdfURL = "{{ pdf_link }}";
+    console.log("Generated PDF URL:", pdfURL);
+    renderPDF(pdfURL);
+</script>
+          
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        console.log("Script loaded and running...");
+    let plagiarismScore = JSON.parse('{{ score | tojson }}'); 
+    let uniqueContent = 100 - plagiarismScore;
+        let ctx = document.getElementById("piechart").getContext("2d");
+
+        new Chart(ctx, {
+            type: "pie",
+            data: {
+                labels: ["Plagiarized", "Unique"],
+                datasets: [{
+                    data: [plagiarismScore, uniqueContent],
+                    backgroundColor: ["#ff4d4d", "#4caf50"]
+                }]
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>
